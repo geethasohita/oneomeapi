@@ -35,3 +35,16 @@ def get_vaccines():
     else:
         vaccines = Vaccine.query.all()
     return vaccines_schema.jsonify(vaccines), 200
+
+
+@app.route('/vaccine/<vaccine_id>', methods=['PUT'])
+def modify_vaccine(vaccine_id):
+    vaccine = Vaccine.query.get(vaccine_id)
+    vaccine.vaccine_name = request.json.get('vaccine_name')
+    vaccine.produced_company = request.json.get('produced_company')
+    vaccine.min_age = request.json.get('min_age')
+    vaccine.max_age = request.json.get('max_age')
+    vaccine.fda_approved = request.json.get('fda_approved')
+    db.session.add(vaccine)
+    db.session.commit()
+    return vaccine_schema.jsonify(vaccine),202
