@@ -4,7 +4,7 @@ from app.models import Vaccine
 
 
 def create_vaccine(name, company, min_age, max_age, fda_approved):
-    existing_vaccine = get_vaccines(name)
+    existing_vaccine = Vaccine.query.filter(Vaccine.vaccine_name == name)
     if existing_vaccine.count() > 0:
         raise BadRequestException(f'Vaccine with name {name} already exists in database.')
     vaccine = Vaccine(vaccine_name=name, produced_company=company, min_age=min_age, max_age=max_age,
