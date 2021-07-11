@@ -5,6 +5,7 @@ from app.models import Vaccine
 from app.schemas import VaccineSchema
 
 vaccine_schema = VaccineSchema()
+vaccines_schema = VaccineSchema(many=True)
 
 
 @app.route('/')
@@ -24,3 +25,13 @@ def create_vaccine():
     db.session.add(vaccine)
     db.session.commit()
     return vaccine_schema.jsonify(vaccine), 201
+
+
+@app.route('/vaccine', methods=['GET'])
+def get_vaccines():
+    name = request.args.get('name')
+    if name:
+        vaccines = Vaccine.query.filter(Vaccine.vaccine_name == name)
+    else:
+        vaccines = Vaccine.query.all()
+    return vaccines_schema.jsonify(vaccines), 200
