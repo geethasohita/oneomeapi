@@ -17,6 +17,8 @@ def create_vaccine(name, company, min_age, max_age, fda_approved):
 def get_vaccines(name):
     if name:
         vaccines = Vaccine.query.filter(Vaccine.vaccine_name == name)
+        if vaccines.count() == 0:
+            raise BadRequestException(f'Vaccine with name {name} does not exist in database')
     else:
         vaccines = Vaccine.query.all()
     return vaccines
