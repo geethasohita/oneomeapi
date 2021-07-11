@@ -47,4 +47,12 @@ def modify_vaccine(vaccine_id):
     vaccine.fda_approved = request.json.get('fda_approved')
     db.session.add(vaccine)
     db.session.commit()
-    return vaccine_schema.jsonify(vaccine),202
+    return vaccine_schema.jsonify(vaccine), 202
+
+
+@app.route('/vaccine/<vaccine_id>', methods=['DELETE'])
+def delete_vaccine(vaccine_id):
+    vaccine = Vaccine.query.get(vaccine_id)
+    db.session.delete(vaccine)
+    db.session.commit()
+    return vaccine_schema.jsonify(vaccine), 202
