@@ -1,6 +1,6 @@
 import unittest
 from unittest import mock
-from unittest.mock import MagicMock
+from unittest.mock import Mock
 
 from app.exceptions import BadRequestException
 from app.models import Vaccine
@@ -10,9 +10,9 @@ from app.service import OneOmeService
 class TestMethods(unittest.TestCase):
 
     def test_create_vaccine(self):
-        mock_db = MagicMock()
+        mock_db = Mock()
         service = OneOmeService(mock_db)
-        mock_get_vaccines = MagicMock()
+        mock_get_vaccines = Mock()
         mock_get_vaccines.return_value = []
         service.get_vaccines = mock_get_vaccines
 
@@ -25,9 +25,9 @@ class TestMethods(unittest.TestCase):
         assert actual_value.fda_approved
 
     def test_create_vaccine_exception(self):
-        mock_db = MagicMock()
+        mock_db = Mock()
         service = OneOmeService(mock_db)
-        mock_get_vaccines = MagicMock()
+        mock_get_vaccines = Mock()
         mock_get_vaccines.return_value = [Vaccine(vaccine_name='test', produced_company='test', min_age=10, max_age=20,
                                                   fda_approved=True)]
 
@@ -38,7 +38,7 @@ class TestMethods(unittest.TestCase):
 
     @mock.patch('app.service.Vaccine')
     def test_get_vaccine_by_name(self, mock_vaccine):
-        mock_db = MagicMock()
+        mock_db = Mock()
         service = OneOmeService(mock_db)
 
         vaccine = Vaccine(vaccine_name='test', produced_company='test', min_age=10, max_age=20,
@@ -51,7 +51,7 @@ class TestMethods(unittest.TestCase):
 
     @mock.patch('app.service.Vaccine')
     def test_get_all_vaccines(self, mock_vaccine):
-        mock_db = MagicMock()
+        mock_db = Mock()
         service = OneOmeService(mock_db)
 
         vaccine = Vaccine(vaccine_name='test', produced_company='test', min_age=10, max_age=20,
@@ -64,7 +64,7 @@ class TestMethods(unittest.TestCase):
 
     @mock.patch('app.service.Vaccine')
     def test_modify_vaccine(self, mock_vaccine):
-        mock_db = MagicMock()
+        mock_db = Mock()
         service = OneOmeService(mock_db)
         vaccine = Vaccine(vaccine_name='test', produced_company='test', min_age=10, max_age=20, fda_approved=True)
         mock_vaccine.query.get.return_value = vaccine
@@ -81,7 +81,7 @@ class TestMethods(unittest.TestCase):
 
     @mock.patch('app.service.Vaccine')
     def test_modify_vaccine_exception(self, mock_vaccine):
-        mock_db = MagicMock()
+        mock_db = Mock()
         service = OneOmeService(mock_db)
         mock_vaccine.query.get.return_value = None
 
@@ -91,7 +91,7 @@ class TestMethods(unittest.TestCase):
 
     @mock.patch('app.service.Vaccine')
     def test_delete_vaccine(self, mock_vaccine):
-        mock_db = MagicMock()
+        mock_db = Mock()
         service = OneOmeService(mock_db)
         vaccine = Vaccine(vaccine_name='test', produced_company='test', min_age=10, max_age=20, fda_approved=True)
         mock_vaccine.query.get.return_value = vaccine
@@ -102,7 +102,7 @@ class TestMethods(unittest.TestCase):
 
     @mock.patch('app.service.Vaccine')
     def test_delete_vaccine_exception(self, mock_vaccine):
-        mock_db = MagicMock()
+        mock_db = Mock()
         service = OneOmeService(mock_db)
         mock_vaccine.query.get.return_value = None
 
