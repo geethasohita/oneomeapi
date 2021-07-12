@@ -98,7 +98,7 @@ class TestMethods(unittest.TestCase):
 
         actual_value = service.delete_vaccine(vaccine_id=1)
 
-        assert actual_value.vaccine_name == 'test'
+        assert actual_value.vaccine_name == 'test1'
 
     @mock.patch('app.service.Vaccine')
     def test_delete_vaccine_exception(self, mock_vaccine):
