@@ -20,7 +20,8 @@ def create():
     min_age = request.json.get('min_age')
     max_age = request.json.get('max_age')
     fda_approved = request.json.get('fda_approved')
-    vaccine = service.create_vaccine(name=name, company=company, min_age=min_age, max_age=max_age, fda_approved=fda_approved)
+    vaccine = service.create_vaccine(name=name, company=company, min_age=min_age, max_age=max_age,
+                                     fda_approved=fda_approved)
     return vaccine_schema.jsonify(vaccine), 201
 
 
