@@ -10,7 +10,7 @@ service = OneOmeService(db)
 
 @app.route('/')
 def index():
-    return 'Hello Oneome'
+    return 'Hello Oneome team! This is a test flask-sqlalachemy application deployed on Heroku'
 
 
 @app.route('/vaccine', methods=['POST'])
