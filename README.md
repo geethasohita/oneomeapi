@@ -3,7 +3,7 @@
 ![example workflow](https://github.com/geethasohita/oneomeapi/actions/workflows/github-actions.yml/badge.svg)
 
 
-Hello OneOme team, this is a `Flask-SqlAlchemy` application which is deployed on [Heroku](https://oneomeapi.herokuapp.com/). I have just put this together to quickly demonstrate for my upcoming code sample interview.
+This is a `Flask-SqlAlchemy` application which is deployed on [Heroku](https://oneomeapi.herokuapp.com/).
 Below are some details regarding this project.
 
 This app has REST endpoints to Create, Read, Update and Delete `Vaccine` resource in a postgres database.
@@ -19,6 +19,5 @@ DELETE https://oneomeapi.herokuapp.com/vaccine/<vaccine_id>
 ```
 `CI` for this app is done through [github actions](https://github.com/geethasohita/oneomeapi/actions) 
 and Heroku-Github integration for `CD`.
-I can discuss any additional details during the interview. Thanks.
 
 
