@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "e32bbc4c-6308-4d05-babf-20d1f569e3ed",
+		"name": "oneomeapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET All Vaccines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://oneomeapi.herokuapp.com/vaccine",
+					"protocol": "https",
+					"host": [
+						"oneomeapi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Create Vaccine",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vaccine_name\": \"Moderna\",\n\t\"produced_company\":\"Moderna Pharma\",\n\t\"min_age\":20,\n\t\"max_age\":100,\n\t\"fda_approved\":true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://oneomeapi.herokuapp.com/vaccine",
+					"protocol": "https",
+					"host": [
+						"oneomeapi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Update Vaccine",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vaccine_name\": \"Moderna\",\n\t\"produced_company\":\"Moderna Pharma\",\n\t\"min_age\":30,\n\t\"max_age\":100,\n\t\"fda_approved\":true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://oneomeapi.herokuapp.com/vaccine/5",
+					"protocol": "https",
+					"host": [
+						"oneomeapi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccine",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Vaccine By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://oneomeapi.herokuapp.com/vaccine?name=Moderna",
+					"protocol": "https",
+					"host": [
+						"oneomeapi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccine"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Moderna"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Vaccine",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://oneomeapi.herokuapp.com/vaccine/2",
+					"protocol": "https",
+					"host": [
+						"oneomeapi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"vaccine",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
